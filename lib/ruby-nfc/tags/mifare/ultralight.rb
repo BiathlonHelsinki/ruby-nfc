@@ -48,7 +48,7 @@ module Mifare
 				data_ptr = FFI::MemoryPointer.new(:uchar, 4)
 				data_ptr.put_bytes(0, [data].pack('H*'))
 
-				res = Mifare.mifare_classic_write(@pointer, block_num, data_ptr)
+				res = Mifare.mifare_classic_write(@pointer, page_num, data_ptr)
 				raise Mifare::Error, ("Can't write page 0x%02x" % page_num) unless 0 == res
 
 				res
